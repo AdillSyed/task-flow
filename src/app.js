@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import authRoutes from "./routes/auth.routes.js";
 
 const app = express(); // Initialize Express app
 
@@ -13,6 +14,8 @@ app.use(
     credentials: true, // Allow cookies to be sent for cookie based authentication
   })
 );
+
+app.use("/api/auth", authRoutes); // Use auth routes for /api/auth path
 
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "OK" });
