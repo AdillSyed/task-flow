@@ -25,16 +25,15 @@ const userSchema = new mongoose.Schema(
 );
 
 // Hash password before saving, a hook, middleware to run before saving a user
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next(); // Only hash if password is modified or new
+userSchema.pre("save", async function () {
+  if (!this.isModified("password")) return; // Only hash if password is modified or new
 
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-  next();
 });
 
 // Compare password during login
-userSchema.methods.comparePassword = async function (enteredPassword) { 
+userSchema.methods.comparePassword = async function (enteredPassword) {
   return bcrypt.compare(enteredPassword, this.password);
 };
 
