@@ -7,10 +7,11 @@ const generateToken = (res, userId) => {
   });
 
   res.cookie("token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    maxAge: 24 * 60 * 60 * 1000,
+    httpOnly: true, // js access disabled to prevent xss attacks
+    path: "/", // cookie available for entire site
+    secure: process.env.NODE_ENV === "production", // Use secure flag in production to prevent cookie from being sent over non-HTTPS connections
+    sameSite: "strict", // SameSite attribute for security to prevent CSRF attacks
+    maxAge: 24 * 60 * 60 * 1000, // 1 day
   });
 };
 
@@ -64,7 +65,10 @@ export const loginUser = async (req, res, next) => {
 export const logoutUser = (req, res) => {
   res.cookie("token", "", {
     httpOnly: true,
-    expires: new Date(0),
+    path: "/", // Ensure cookie is cleared for the entire site
+    sameSite: "strict",
+    secure: process.env.NODE_ENV === "production",
+    expires: new Date(0), // Expiration set to a past date → browser deletes it immediately
   });
 
   res.status(200).json({ message: "Logged out successfully" });
