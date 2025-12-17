@@ -38,26 +38,26 @@ This project focuses on **clarity, correctness, and explainability**, rather tha
 
 ## 📂 Project Structure
 
-backend/
-├── src/
-│ ├── config/
-│ │ └── db.js
-│ ├── controllers/
-│ │ ├── auth.controller.js
-│ │ └── task.controller.js
-│ ├── models/
-│ │ ├── user.model.js
-│ │ └── task.model.js
-│ ├── routes/
-│ │ ├── auth.routes.js
-│ │ └── task.routes.js
-│ ├── middlewares/
-│ │ ├── auth.middleware.js
-│ │ ├── error.middleware.js
-│ │ └── validate.middleware.js
-│ ├── app.js
-│ └── server.js
-├── .env
+backend/ <br />
+├── src/ <br />
+│ ├── config/ <br />
+│ │ └── db.js <br />
+│ ├── controllers/ <br />
+│ │ ├── auth.controller.js <br />
+│ │ └── task.controller.js <br />
+│ ├── models/ <br />
+│ │ ├── user.model.js <br />
+│ │ └── task.model.js <br />
+│ ├── routes/ <br />
+│ │ ├── auth.routes.js <br />
+│ │ └── task.routes.js <br />
+│ ├── middlewares/ <br />
+│ │ ├── auth.middleware.js <br />
+│ │ ├── error.middleware.js <br />
+│ │ └── validate.middleware.js <br />
+│ ├── app.js <br />
+│ └── server.js <br />
+├── .env <br />
 └── package.json
 
 ---
